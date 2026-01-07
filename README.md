@@ -27,6 +27,31 @@ python3 -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 
 - `http://localhost:8000`
 
+## 部署（Docker）
+
+### 方式 A：docker compose（推薦）
+
+```bash
+docker compose up --build -d
+```
+
+打開：
+
+- `http://<你的主機IP>:8000`
+
+停止：
+
+```bash
+docker compose down
+```
+
+### 方式 B：純 docker
+
+```bash
+docker build -t bazi-app .
+docker run -d --name bazi-app -p 8000:8000 --restart unless-stopped bazi-app
+```
+
 ## 專案結構
 
 - `app/main.py`: FastAPI 入口、API 與靜態頁面
