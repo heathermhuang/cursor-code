@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI 算命｜八字排盤與五行分析</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <div>
+          <h1>AI 算命｜八字排盤與五行分析</h1>
+          <p class="subtitle">輸入生日時間 → 排八字 → 回顧過去 5 年驗證 → 生成未來 5 年運勢</p>
+        </div>
+      </header>
+
+      <section id="step1" class="card">
+        <h2>步驟 1：輸入資料</h2>
+        <form id="form" class="grid">
+          <label class="field">
+            <span>生日（陽曆）</span>
+            <input type="date" id="birthDate" required />
+          </label>
+
+          <label class="field">
+            <span>出生時間（24 小時制）</span>
+            <input type="time" id="birthTime" required />
+          </label>
+
+          <label class="field">
+            <span>性別</span>
+            <select id="gender" required>
+              <option value="male">男</option>
+              <option value="female">女</option>
+              <option value="other">其他/不便透露</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>出生城市（選填）</span>
+            <input type="text" id="city" placeholder="例如：台北 / 上海 / 香港" />
+          </label>
+
+          <div class="actions">
+            <button type="submit" class="btn primary" id="btnChart">開始排盤</button>
+            <span class="hint" id="hint1">不做真太陽時校正；城市僅作展示。</span>
+          </div>
+        </form>
+      </section>
+
+      <section id="step2" class="card hidden">
+        <h2>步驟 2：八字排盤與過去 5 年驗證</h2>
+
+        <div class="split">
+          <div>
+            <h3>四柱</h3>
+            <div id="pillars" class="pillars"></div>
+
+            <h3>五行統計</h3>
+            <div id="elements" class="elements"></div>
+          </div>
+
+          <div>
+            <h3>回顧過去 5 年（請回答是/否）</h3>
+            <div id="questions" class="questions"></div>
+
+            <div class="actions">
+              <button class="btn primary" id="btnResult">生成未來 5 年運勢</button>
+              <button class="btn" id="btnBack">返回修改資料</button>
+              <span class="hint" id="hint2">你的回答越完整，運勢生成的「可信度」越高。</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="step3" class="card hidden">
+        <h2>結果：匹配度與未來 5 年運勢</h2>
+        <div id="result" class="result"></div>
+
+        <div class="actions">
+          <button class="btn" id="btnRestart">重新排盤</button>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <small>提示：本網站提供的是「八字/五行簡化推演」與自我反思框架，非決策依據。</small>
+      </footer>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
+
